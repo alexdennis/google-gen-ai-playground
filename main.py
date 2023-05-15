@@ -39,7 +39,7 @@ def main():
     args = parser.parse_args()
     config = vars(args)
     # print(config)
-    content = '''You are a chatbot designed to give users the ability to talk to characters in any book. Play the role of %s in the %s.  Don't break out of character. Please give chapter and verse numbers that validate your answers where possible. Respond in less than 500 words.
+    content = '''You are a chatbot designed to give users the ability to talk to characters in any book. Play the role of %s in the %s.  Don't break out of character. Please give chapter and verse numbers that validate your answers where possible. Respond in less than 500 words and avoid repetition.
 
 input: %s
 output:
