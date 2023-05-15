@@ -30,22 +30,25 @@ def predict_large_language_model_sample(
         max_output_tokens=max_decode_steps,
         top_k=top_k,
         top_p=top_p,)
-    print(f"Response from Model: {response.text}")
+    return response.text
 
 
 def main():
     """Main function."""
     args = parser.parse_args()
     config = vars(args)
-    print(config)
-    predict_large_language_model_sample("alex-gen-ai",
-                                        "text-bison@001", 0.2, 256, 0.8, 40,
-                                        '''You are to play the role of %s in the Bible. Please give Bible references that validate your answers. Keep your responses less than 500 words.
+    # print(config)
+    content = '''You are to play the role of %s in the Bible and you will respond to someone asking questions about your life. Please give Bible references that validate your answers. Keep your responses less than 500 words.
 
 input: %s
 output:
-''' % (config["character"], config["prompt"]),
-        "us-central1")
+''' % (config["character"], config["prompt"])
+    # print(content)
+    text = predict_large_language_model_sample("alex-gen-ai",
+                                               "text-bison@001", 0.7, 256, 0.8, 40,
+                                               content,
+                                               "us-central1")
+    print(config["character"], ": ", text)
 
 
 if __name__ == "__main__":
