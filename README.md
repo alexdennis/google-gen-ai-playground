@@ -2,7 +2,7 @@
 
 Playing with Gen AI
 
-[[/images/convo.png|Conversation with Jesus]]
+![Talking with AI Jesus](https://github.com/alexdennis/google-gen-ai-playground/blob/main/images/convo.png?raw=true)
 
 # Development
 
