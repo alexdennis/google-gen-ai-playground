@@ -2,7 +2,17 @@
 
 Playing with Gen AI
 
-![Talking with AI Jesus](https://github.com/alexdennis/google-gen-ai-playground/blob/main/images/convo.png?raw=true)
+## Alice
+
+![Talking with AI Alice](https://github.com/alexdennis/google-gen-ai-playground/blob/main/images/alice.png?raw=true)
+
+## Frodo
+
+![Talking with AI Frodo](https://github.com/alexdennis/google-gen-ai-playground/blob/main/images/frodo.png?raw=true)
+
+## Jesus
+
+![Talking with AI Jesus](https://github.com/alexdennis/google-gen-ai-playground/blob/main/images/jesus.png?raw=true)
 
 # Development
 
