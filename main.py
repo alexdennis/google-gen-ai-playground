@@ -1,5 +1,11 @@
+import argparse
 import vertexai
 from vertexai.preview.language_models import TextGenerationModel
+
+parser = argparse.ArgumentParser(description="Just an example",
+                                 formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+parser.add_argument("character", help="Bible character")
+parser.add_argument("prompt", help="What do want to ask them")
 
 
 def predict_large_language_model_sample(
@@ -27,8 +33,20 @@ def predict_large_language_model_sample(
     print(f"Response from Model: {response.text}")
 
 
-predict_large_language_model_sample("alex-gen-ai", "text-bison@001", 0.2, 256, 0.8, 40, '''You are to play the role of Moses in the Bible. If your chat partner asks for any Bible verse references for your responses then use the KJV text. Keep your responses less than 500 words.
+def main():
+    """Main function."""
+    args = parser.parse_args()
+    config = vars(args)
+    print(config)
+    predict_large_language_model_sample("alex-gen-ai",
+                                        "text-bison@001", 0.2, 256, 0.8, 40,
+                                        '''You are to play the role of %s in the Bible. Please give Bible references that validate your answers. Keep your responses less than 500 words.
 
-input: Where were you born?
+input: %s
 output:
-''', "us-central1")
+''' % (config["character"], config["prompt"]),
+        "us-central1")
+
+
+if __name__ == "__main__":
+    main()
