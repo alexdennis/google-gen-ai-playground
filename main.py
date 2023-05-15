@@ -2,9 +2,10 @@ import argparse
 import vertexai
 from vertexai.preview.language_models import TextGenerationModel
 
-parser = argparse.ArgumentParser(description="Just an example",
+parser = argparse.ArgumentParser(description="Universal Book Chatbot",
                                  formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-parser.add_argument("character", help="Bible character")
+parser.add_argument("book", help="Book name")
+parser.add_argument("character", help="Book character")
 parser.add_argument("prompt", help="What do want to ask them")
 
 
@@ -38,14 +39,14 @@ def main():
     args = parser.parse_args()
     config = vars(args)
     # print(config)
-    content = '''You are to play the role of %s in the Bible and you will respond to someone asking questions about your life. Please give Bible references that validate your answers. Keep your responses less than 500 words.
+    content = '''You are a chatbot designed to give users the ability to talk to characters in any book. Play the role of %s in the %s.  Don't break out of character. Please give chapter and verse numbers that validate your answers where possible. Respond in less than 500 words.
 
 input: %s
 output:
-''' % (config["character"], config["prompt"])
+''' % (config["character"], config["book"], config["prompt"])
     # print(content)
     text = predict_large_language_model_sample("alex-gen-ai",
-                                               "text-bison@001", 0.7, 256, 0.8, 40,
+                                               "text-bison@001", 0.5, 256, 0.8, 40,
                                                content,
                                                "us-central1")
     print(config["character"], ": ", text)
